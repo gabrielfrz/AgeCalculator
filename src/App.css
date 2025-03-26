@@ -1,24 +1,30 @@
-/* Fundo da página com gradiente leve */
-body {
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #eef2f3, #8e9eab);
-  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Fundo da página com gradiente leve */
+body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  background: linear-gradient(to bottom right, #f9f9f9, #e3e7ed);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Estilo principal do app */
 .App {
-  background: white;
-  padding: 2rem 3rem;
+  background: #ffffffee; /* branco levemente translúcido */
+  padding: 2rem 1rem;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   text-align: center;
+  width: 90%;
   max-width: 400px;
-  width: 100%;
+  backdrop-filter: blur(6px); /* efeito vidro */
 }
 
 /* Título */
@@ -27,18 +33,25 @@ h2 {
   color: #333;
 }
 
-/* Inputs */
+/* Formulário */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 form input {
-  width: 80px;
+  flex: 1 1 80px;
+  min-width: 60px;
+  max-width: 100px;
   padding: 0.6rem;
-  margin: 0.5rem;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1rem;
   text-align: center;
 }
 
-/* Botão */
 form button {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
@@ -60,21 +73,71 @@ p {
   margin-top: 1.5rem;
   font-weight: bold;
   color: #222;
-}¨
+}
 
-.resultado {
-  margin-top: 2rem;
-  font-size: 1.5rem;
-  color: #333;
+/* Resultado */
+.resultado-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+}
+
+
+.resultado {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  font-size: 1.2rem;
+  color: #333;
   align-items: center;
 }
 
 .resultado div {
-  background-color: #f0f4ff;
-  padding: 0.5rem 1.5rem;
-  border-radius: 32px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #eef2ff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  form input {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  form {
+    gap: 0.75rem;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  .resultado div {
+    width: 100%;
+    text-align: center;
+  }
+}
+.reset-button {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+}
+
+.reset-button:hover {
+  background-color: #e74c3c;
 }
