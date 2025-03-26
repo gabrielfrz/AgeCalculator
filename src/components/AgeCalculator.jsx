@@ -4,7 +4,7 @@ const AgeCalculator = () => {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
-  const [mensagem, setMensagem] = useState("");
+  const [mensagem, setMensagem] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,19 +44,30 @@ const AgeCalculator = () => {
       meses += 12;
     }
 
-    setMensagem("Idade: " + anos + "a, " + meses + "m, " + dias + "d");
+    setMensagem({ anos, meses, dias });
   };
 
   return (
     <div className="App">
       <h2>Calculadora de Idade</h2>
       <form onSubmit={handleSubmit}>
-        <input type="number" placeholder="Dia" value={day} onChange={(e) => setDay(e.target.value)} />
-        <input type="number" placeholder="Mês" value={month} onChange={(e) => setMonth(e.target.value)} />
-        <input type="number" placeholder="Ano" value={year} onChange={(e) => setYear(e.target.value)} />
+        <input type="number" placeholder="Dia" value={day} onChange={(e) => setDay(e.target.value)}min="1" max="31"
+ />
+        <input type="number" placeholder="Mês" value={month} onChange={(e) => setMonth(e.target.value)}min="1" max="12"
+ />
+        <input type="number" placeholder="Ano" value={year} onChange={(e) => setYear(e.target.value)} min="1"
+        />
         <button type="submit">Calcular</button>
       </form>
-      {mensagem && <p>{mensagem}</p>}
+      {mensagem && (
+  <div className="resultado">
+    <div><strong>{mensagem.anos}</strong> Years</div>
+    <div><strong>{mensagem.meses}</strong> Months</div>
+    <div><strong>{mensagem.dias}</strong> Days</div>
+  </div>
+)}
+
+
     </div>
   );
   
